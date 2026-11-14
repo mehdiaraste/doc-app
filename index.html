@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111827">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="مدیریت کارها">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>مدیریت کارها</title>
+<style>
+:root{--bg:#f3f5f8;--card:#fff;--ink:#172033;--muted:#718096;--line:#e5eaf1;--navy:#111827;--yellow:#f4c542;--green:#16865b;--red:#c24141}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);font-size:15px}
+.app{max-width:760px;margin:auto;padding:18px 15px 40px}.top{background:var(--navy);color:white;border-radius:22px;padding:22px 20px;margin-bottom:16px;position:relative;overflow:hidden}.top:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:#f4c54220;left:-50px;top:-80px}.eyebrow{color:#f4c542;font-size:12px;font-weight:700}.top h1{font-size:24px;margin:8px 0 5px}.top p{margin:0;color:#cbd5e1;font-size:13px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}.stat{background:#ffffff12;border:1px solid #ffffff18;border-radius:14px;padding:10px;text-align:center}.stat b{display:block;font-size:22px}.stat span{font-size:11px;color:#cbd5e1}.progress{height:7px;background:#ffffff22;border-radius:9px;margin-top:14px;overflow:hidden}.progress i{display:block;height:100%;background:var(--yellow);width:0;transition:width .2s}.toolbar{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}.search{flex:1;min-width:160px;border:1px solid var(--line);background:white;border-radius:12px;padding:12px 13px;font:inherit;outline:none}.btn{border:0;border-radius:12px;padding:11px 14px;font:inherit;font-weight:700;cursor:pointer}.primary{background:var(--yellow);color:#241d08}.secondary{background:white;color:var(--ink);border:1px solid var(--line)}.tabs{display:flex;gap:7px;overflow:auto;padding:2px 0 10px;scrollbar-width:none}.tab{white-space:nowrap;border:1px solid var(--line);background:white;border-radius:30px;padding:9px 13px;font:inherit;font-size:12px;color:#526071}.tab.active{background:var(--navy);border-color:var(--navy);color:white}.section{background:var(--card);border:1px solid var(--line);border-radius:17px;margin:11px 0;overflow:hidden}.section-head{padding:14px 15px 10px;display:flex;align-items:center;justify-content:space-between;font-weight:800}.count{font-size:11px;color:var(--muted);font-weight:500}.task{display:flex;gap:11px;align-items:flex-start;padding:13px 15px;border-top:1px solid #f0f2f5}.task input{appearance:none;width:21px;height:21px;border:1.7px solid #b8c2cf;border-radius:7px;margin:1px 0 0;flex:none;cursor:pointer}.task input:checked{background:var(--green);border-color:var(--green)}.task input:checked:after{content:"✓";color:white;display:block;text-align:center;line-height:18px;font-weight:800}.task-main{flex:1;min-width:0}.task-title{line-height:1.6;overflow-wrap:anywhere}.task.done .task-title{text-decoration:line-through;color:#98a2b1}.task-meta{display:flex;gap:7px;align-items:center;margin-top:5px}.priority{font-size:10px;color:var(--muted);background:#f3f5f8;border-radius:6px;padding:3px 6px}.actions{display:flex;gap:5px}.iconbtn{border:0;background:transparent;color:#8993a2;padding:4px;cursor:pointer;font-size:17px}.empty{text-align:center;color:var(--muted);padding:25px}.fab{position:fixed;bottom:calc(18px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:var(--yellow);color:#211b08;border:0;border-radius:30px;padding:14px 23px;font:inherit;font-weight:800;box-shadow:0 7px 25px #1b243533;cursor:pointer;z-index:4}.modal{position:fixed;inset:0;background:#10182799;display:none;align-items:flex-end;justify-content:center;z-index:10;padding:12px}.modal.open{display:flex}.sheet{background:white;border-radius:22px 22px 16px 16px;width:min(100%,560px);padding:20px;max-height:90vh;overflow:auto}.sheet h2{margin:0 0 16px;font-size:19px}.field{display:block;margin:12px 0}.field span{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}.field input,.field select{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;font:inherit;background:white}.form-actions{display:flex;gap:8px;margin-top:18px}.form-actions button{flex:1}.foot{font-size:11px;color:var(--muted);text-align:center;margin:22px 0 70px}.smalllink{color:#64748b;text-decoration:underline;cursor:pointer;background:none;border:0;font:inherit;font-size:12px;padding:8px}
+@media(min-width:600px){.app{padding-top:28px}.top{padding:26px}.task{padding:14px 18px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="eyebrow">داشبورد شخصی</div>
+    <h1>مدیریت کارها</h1>
+    <p>همه پروژه‌ها و پیگیری‌ها، یک‌جا و مرتب</p>
+    <div class="stats">
+      <div class="stat"><b id="remaining">0</b><span>باقی‌مانده</span></div>
+      <div class="stat"><b id="completed">0</b><span>انجام‌شده</span></div>
+      <div class="stat"><b id="percent">0٪</b><span>پیشرفت کل</span></div>
+    </div>
+    <div class="progress"><i id="progress"></i></div>
+  </header>
+  <div class="toolbar">
+    <input id="search" class="search" placeholder="جست‌وجو در کارها…" autocomplete="off">
+    <button class="btn secondary" id="showDone">انجام‌شده‌ها</button>
+  </div>
+  <nav class="tabs" id="tabs"></nav>
+  <main id="list"></main>
+  <div class="foot">
+    اطلاعات روی همین آیفون و در همین مرورگر ذخیره می‌شود.<br>
+    <button class="smalllink" id="export">خروجی پشتیبان</button>
+    <button class="smalllink" id="importBtn">بازیابی پشتیبان</button>
+    <button class="smalllink" id="reset">بازنشانی اولیه</button>
+  </div>
+</div>
+<button class="fab" id="add">＋ افزودن کار جدید</button>
+<div class="modal" id="modal">
+ <div class="sheet">
+  <h2 id="modalTitle">افزودن کار جدید</h2>
+  <form id="taskForm">
+   <input type="hidden" id="taskId">
+   <label class="field"><span>عنوان کار</span><input id="taskTitle" required maxlength="140" placeholder="مثلاً پیگیری صورت‌وضعیت"></label>
+   <label class="field"><span>دسته‌بندی</span><select id="taskCategory"></select></label>
+   <label class="field"><span>اولویت</span><select id="taskPriority"><option>زیاد</option><option selected>متوسط</option><option>کم</option></select></label>
+   <div class="form-actions"><button class="btn primary" type="submit">ذخیره کار</button><button class="btn secondary" type="button" id="cancel">انصراف</button></div>
+  </form>
+ </div>
+</div>
+<input type="file" id="fileInput" accept="application/json" hidden>
+<script>
+const INITIAL_TASKS = [{"id": "milad", "title": "قرارداد بیمارستان میلاد", "category": "شهریور", "done": false, "priority": "متوسط"}, {"id": "abd", "title": "پیشنهاد قیمت عبدالرزاق", "category": "شهریور", "done": false, "priority": "متوسط"}, {"id": "saeed", "title": "پیشنهاد قیمت سعید هادی", "category": "شهریور", "done": false, "priority": "متوسط"}, {"id": "qazvin_mohammadi", "title": "پیگیری پروژه قزوین از محمدی", "category": "قزوین", "done": false, "priority": "زیاد"}, {"id": "shahrekord_rep", "title": "پیگیری نماینده مستقر در شهرکرد", "category": "شهرکرد و لردگان", "done": false, "priority": "متوسط"}, {"id": "brb", "title": "پیگیری BRB از شادانلو", "category": "شهرکرد و لردگان", "done": false, "priority": "متوسط"}, {"id": "iland", "title": "پیگیری جلسه ایلند", "category": "شهریور", "done": false, "priority": "متوسط"}, {"id": "kaveh", "title": "پیگیری جلسه کاوه صدقی", "category": "شهریور", "done": false, "priority": "متوسط"}, {"id": "mehrza", "title": "پیگیری تسویه حساب مهرزا", "category": "شهریور", "done": false, "priority": "زیاد"}, {"id": "glass", "title": "پیگیری طرح پنل شیشه‌ای اتاق عمل قزوین از مهندس خورشیدی", "category": "قزوین", "done": false, "priority": "زیاد"}, {"id": "rebar", "title": "پیگیری ورود میلگرد به لردگان از ناظر", "category": "شهرکرد و لردگان", "done": false, "priority": "زیاد"}, {"id": "clock", "title": "خرید دستگاه ساعت‌زنی برای اردگان", "category": "شهرکرد و لردگان", "done": false, "priority": "متوسط"}, {"id": "fee", "title": "تکمیل فرمت حق‌الزحمه لردگان", "category": "شهرکرد و لردگان", "done": false, "priority": "متوسط"}, {"id": "mom", "title": "ارسال بار مامان به کیش", "category": "شخصی", "done": false, "priority": "متوسط"}, {"id": "gisha_contract", "title": "پیگیری ابلاغ قرارداد گیشا", "category": "گیشا", "done": false, "priority": "زیاد"}, {"id": "cooling", "title": "نوشتن صورت‌جلسه تغییر سیستم سرمایشی گیشا", "category": "گیشا", "done": false, "priority": "متوسط"}, {"id": "soil_minutes", "title": "نوشتن صورت‌جلسه حمل خاک لردگان", "category": "شهرکرد و لردگان", "done": true, "priority": "متوسط"}, {"id": "insurance_lahijan", "title": "ارسال نامه بیمه لاهیجان", "category": "شهریور", "done": true, "priority": "متوسط"}, {"id": "daily_letters", "title": "پاسخ مکاتبات روزانه در اتوماسیون", "category": "شهریور", "done": true, "priority": "متوسط"}, {"id": "seal", "title": "ساخت مهر نظارت لردگان", "category": "شهرکرد و لردگان", "done": true, "priority": "متوسط"}, {"id": "insurance_shahrekord", "title": "پیگیری واریزی بیمه شهرکرد", "category": "شهرکرد و لردگان", "done": true, "priority": "متوسط"}, {"id": "erbil_doctor", "title": "پیگیری دکتر بابت پروژه اربیل", "category": "شهریور", "done": true, "priority": "متوسط"}, {"id": "report", "title": "ارسال فایل فرمت گزارش ماهانه لردگان", "category": "شهرکرد و لردگان", "done": false, "priority": "متوسط"}, {"id": "borujen", "title": "پیگیری امور مالی خوابگاه بروجن", "category": "شهرکرد و لردگان", "done": false, "priority": "زیاد"}, {"id": "invoice", "title": "فاکتور شهید بهشتی – روجیار", "category": "شهریور", "done": false, "priority": "متوسط"}];
+const CATEGORIES = ["همه","شهرکرد و لردگان","گیشا","قزوین","شهریور","شخصی"];
+const KEY="mehdi_task_manager_v1";
+let tasks = loadTasks(), category="همه", doneMode=false;
+function loadTasks(){try{const x=localStorage.getItem(KEY);return x?JSON.parse(x):structuredClone(INITIAL_TASKS)}catch(e){return INITIAL_TASKS}}
+function save(){localStorage.setItem(KEY,JSON.stringify(tasks));render()}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function render(){
+ const done=tasks.filter(t=>t.done).length, total=tasks.length, pct=total?Math.round(done/total*100):0;
+ document.getElementById("remaining").textContent=total-done;
+ document.getElementById("completed").textContent=done;
+ document.getElementById("percent").textContent=pct+"٪";
+ document.getElementById("progress").style.width=pct+"%";
+ document.getElementById("tabs").innerHTML=CATEGORIES.map(c=>`<button class="tab ${category===c?'active':''}" data-cat="${esc(c)}">${esc(c)}${c==="همه"?"":` (${tasks.filter(t=>t.category===c).length})`}</button>`).join("");
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ let shown=tasks.filter(t=>(category==="همه"||t.category===category)&&(doneMode?t.done:!t.done)&&t.title.toLowerCase().includes(q));
+ const groups=category==="همه"?CATEGORIES.slice(1):[category];
+ document.getElementById("list").innerHTML=groups.map(g=>{
+  const arr=shown.filter(t=>t.category===g);
+  if(!arr.length)return "";
+  return `<section class="section"><div class="section-head"><span>${esc(g)}</span><span class="count">${arr.length} کار</span></div>${arr.map(t=>`<div class="task ${t.done?'done':''}"><input type="checkbox" aria-label="تغییر وضعیت" data-check="${t.id}" ${t.done?'checked':''}><div class="task-main"><div class="task-title">${esc(t.title)}</div><div class="task-meta"><span class="priority">اولویت ${esc(t.priority||"متوسط")}</span></div></div><div class="actions"><button class="iconbtn" title="ویرایش" data-edit="${t.id}">✎</button><button class="iconbtn" title="حذف" data-delete="${t.id}">×</button></div></div>`).join("")}</section>`;
+ }).join("") || `<div class="empty">${doneMode?"هنوز کاری در آرشیو انجام‌شده‌ها نیست.":"در این دسته کاری پیدا نشد."}</div>`;
+ document.getElementById("showDone").textContent=doneMode?"نمایش کارهای باز":"انجام‌شده‌ها";
+}
+function openModal(t){
+ document.getElementById("modalTitle").textContent=t?"ویرایش کار":"افزودن کار جدید";
+ document.getElementById("taskId").value=t?.id||"";
+ document.getElementById("taskTitle").value=t?.title||"";
+ document.getElementById("taskCategory").innerHTML=CATEGORIES.slice(1).map(c=>`<option ${t?.category===c?'selected':''}>${esc(c)}</option>`).join("");
+ document.getElementById("taskPriority").value=t?.priority||"متوسط";
+ document.getElementById("modal").classList.add("open");
+ setTimeout(()=>document.getElementById("taskTitle").focus(),100);
+}
+document.getElementById("add").onclick=()=>openModal();
+document.getElementById("cancel").onclick=()=>document.getElementById("modal").classList.remove("open");
+document.getElementById("modal").onclick=e=>{if(e.target.id==="modal")document.getElementById("modal").classList.remove("open")};
+document.getElementById("taskForm").onsubmit=e=>{
+ e.preventDefault();const id=document.getElementById("taskId").value;
+ const obj={id:id||("t"+Date.now()),title:document.getElementById("taskTitle").value.trim(),category:document.getElementById("taskCategory").value,priority:document.getElementById("taskPriority").value,done:false};
+ if(id){const old=tasks.find(t=>t.id===id);obj.done=old?.done||false;tasks=tasks.map(t=>t.id===id?obj:t)}else tasks.unshift(obj);
+ document.getElementById("modal").classList.remove("open");save();
+};
+document.getElementById("list").onclick=e=>{
+ const check=e.target.closest("[data-check]");if(check){const t=tasks.find(x=>x.id===check.dataset.check);t.done=check.checked;save();return}
+ const edit=e.target.closest("[data-edit]");if(edit){openModal(tasks.find(t=>t.id===edit.dataset.edit));return}
+ const del=e.target.closest("[data-delete]");if(del&&confirm("این کار حذف شود؟")){tasks=tasks.filter(t=>t.id!==del.dataset.delete);save()}
+};
+document.getElementById("tabs").onclick=e=>{const b=e.target.closest("[data-cat]");if(b){category=b.dataset.cat;render()}};
+document.getElementById("search").oninput=render;
+document.getElementById("showDone").onclick=()=>{doneMode=!doneMode;render()};
+document.getElementById("export").onclick=()=>{const blob=new Blob([JSON.stringify(tasks,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="task-backup.json";a.click();URL.revokeObjectURL(a.href)};
+document.getElementById("importBtn").onclick=()=>document.getElementById("fileInput").click();
+document.getElementById("fileInput").onchange=async e=>{try{const data=JSON.parse(await e.target.files[0].text());if(Array.isArray(data)&&confirm("اطلاعات فعلی با پشتیبان جایگزین شود؟")){tasks=data;save()}}catch(err){alert("فایل پشتیبان معتبر نیست.")}e.target.value=""};
+document.getElementById("reset").onclick=()=>{if(confirm("همه تغییرات پاک و فهرست اولیه بازگردانی شود؟")){tasks=structuredClone(INITIAL_TASKS);save()}};
+if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+render();
+</script>
+</body></html>
